@@ -28,6 +28,7 @@ var Engine = (function(global) {
     canvas.height = 606;
     doc.body.appendChild(canvas);
 
+
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
@@ -94,6 +95,8 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+        star.update();
+        heart.update();
     }
 
     /* This function initially draws the "game level", it will then call
@@ -149,6 +152,8 @@ var Engine = (function(global) {
         /* Loop through all of the objects within the allEnemies array and call
          * the render function you have defined.
          */
+        star.render();
+        heart.render();
         allEnemies.forEach(function(enemy) {
             enemy.render();
         });
@@ -169,11 +174,15 @@ var Engine = (function(global) {
      * all of these images are properly loaded our game will start.
      */
     Resources.load([
+        'images/Star.png',
+        'images/Heart2.png',
         'images/stone-block.png',
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/char-horn-girl.png'
+        
     ]);
     Resources.onReady(init);
 
